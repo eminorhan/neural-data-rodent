@@ -61,9 +61,8 @@ if __name__ == '__main__':
             nwbfile = io.read()
 
             # we will save just spike activity for now
-            units = nwbfile.units.to_dataframe()
-            max_time = max([u.max() for u in units['spike_times']])
-            spike_counts = np.vstack([np.histogram(row, bins=np.arange(0, max_time + 0.02, 0.02))[0] for row in units['spike_times']]).astype(np.uint8)  # spike count matrix (nxt: n is #channels, t is time bins)
+            units = nwbfile.acquisition["firing_rates"].data[:]
+            spike_counts = np.round(units.T).astype(np.uint8)  # spike count matrix (nxt: n is #channels, t is time bins)
 
             # file identifier
             identifier = nwbfile.identifier
@@ -87,4 +86,4 @@ if __name__ == '__main__':
     print(f"Number of tokens in dataset: {n_tokens} tokens")
 
     # push all data to hub
-    ds.push_to_hub("eminorhan/shield", num_shards=10, token=True)
+    ds.push_to_hub("eminorhan/gonzalez", num_shards=1, token=True)

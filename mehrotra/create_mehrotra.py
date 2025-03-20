@@ -87,4 +87,4 @@ if __name__ == '__main__':
     print(f"Number of tokens in dataset: {n_tokens} tokens")
 
     # push all data to hub
-    ds.push_to_hub("eminorhan/shield", num_shards=10, token=True)
+    ds.push_to_hub("eminorhan/mehrotra", num_shards=10, token=True)
