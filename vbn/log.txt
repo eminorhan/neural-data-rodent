@@ -1,0 +1,118 @@
+Namespace(data_dir='data')
+Files: ['data/ecephys_session_1048196054.nwb', 'data/ecephys_session_1122903357.nwb', 'data/ecephys_session_1076265417.nwb', 'data/ecephys_session_1115356973.nwb', 'data/ecephys_session_1079018673.nwb', 'data/ecephys_session_1121607504.nwb', 'data/ecephys_session_1052331749.nwb', 'data/ecephys_session_1090800639.nwb', 'data/ecephys_session_1077897245.nwb', 'data/ecephys_session_1049273528.nwb', 'data/ecephys_session_1072572100.nwb', 'data/ecephys_session_1124285719.nwb', 'data/ecephys_session_1067588044.nwb', 'data/ecephys_session_1087992708.nwb', 'data/ecephys_session_1072345110.nwb', 'data/ecephys_session_1079278078.nwb', 'data/ecephys_session_1081429294.nwb', 'data/ecephys_session_1061238668.nwb', 'data/ecephys_session_1064415305.nwb', 'data/ecephys_session_1053718935.nwb', 'data/ecephys_session_1096620314.nwb', 'data/ecephys_session_1084428217.nwb', 'data/ecephys_session_1048189115.nwb', 'data/ecephys_session_1064644573.nwb', 'data/ecephys_session_1070961372.nwb', 'data/ecephys_session_1079275221.nwb', 'data/ecephys_session_1049514117.nwb', 'data/ecephys_session_1091039376.nwb', 'data/ecephys_session_1093642839.nwb', 'data/ecephys_session_1092283837.nwb', 'data/ecephys_session_1077711823.nwb', 'data/ecephys_session_1093864136.nwb', 'data/ecephys_session_1063010496.nwb', 'data/ecephys_session_1079018622.nwb', 'data/ecephys_session_1067781390.nwb', 'data/ecephys_session_1105798776.nwb', 'data/ecephys_session_1125937457.nwb', 'data/ecephys_session_1044594870.nwb', 'data/ecephys_session_1067790400.nwb', 'data/ecephys_session_1064400234.nwb', 'data/ecephys_session_1086410738.nwb', 'data/ecephys_session_1108334384.nwb', 'data/ecephys_session_1140102579.nwb', 'data/ecephys_session_1121406444.nwb', 'data/ecephys_session_1063010385.nwb', 'data/ecephys_session_1087993643.nwb', 'data/ecephys_session_1061463555.nwb', 'data/ecephys_session_1099596266.nwb', 'data/ecephys_session_1056720277.nwb', 'data/ecephys_session_1062755779.nwb', 'data/ecephys_session_1081431006.nwb', 'data/ecephys_session_1056495334.nwb', 'data/ecephys_session_1087723305.nwb', 'data/ecephys_session_1052342277.nwb', 'data/ecephys_session_1095138995.nwb', 'data/ecephys_session_1044016459.nwb', 'data/ecephys_session_1044597824.nwb', 'data/ecephys_session_1077712208.nwb', 'data/ecephys_session_1109889304.nwb', 'data/ecephys_session_1108335514.nwb', 'data/ecephys_session_1115368723.nwb', 'data/ecephys_session_1111216934.nwb', 'data/ecephys_session_1086433081.nwb', 'data/ecephys_session_1055403683.nwb', 'data/ecephys_session_1118508667.nwb', 'data/ecephys_session_1098119201.nwb', 'data/ecephys_session_1152811536.nwb', 'data/ecephys_session_1065905010.nwb', 'data/ecephys_session_1108531612.nwb', 'data/ecephys_session_1104058216.nwb', 'data/ecephys_session_1069458330.nwb', 'data/ecephys_session_1111013640.nwb', 'data/ecephys_session_1090803859.nwb', 'data/ecephys_session_1069192277.nwb', 'data/ecephys_session_1044385384.nwb', 'data/ecephys_session_1124507277.nwb', 'data/ecephys_session_1099598937.nwb', 'data/ecephys_session_1107172157.nwb', 'data/ecephys_session_1152632711.nwb', 'data/ecephys_session_1072341440.nwb', 'data/ecephys_session_1101473342.nwb', 'data/ecephys_session_1112302803.nwb', 'data/ecephys_session_1047977240.nwb', 'data/ecephys_session_1125713722.nwb', 'data/ecephys_session_1115086689.nwb', 'data/ecephys_session_1096935816.nwb', 'data/ecephys_session_1065449881.nwb', 'data/ecephys_session_1128520325.nwb', 'data/ecephys_session_1104052767.nwb', 'data/ecephys_session_1086200042.nwb', 'data/ecephys_session_1113751921.nwb', 'data/ecephys_session_1053941483.nwb', 'data/ecephys_session_1116941914.nwb', 'data/ecephys_session_1113957627.nwb', 'data/ecephys_session_1118327332.nwb', 'data/ecephys_session_1112515874.nwb', 'data/ecephys_session_1089296550.nwb', 'data/ecephys_session_1087720624.nwb', 'data/ecephys_session_1120251466.nwb', 'data/ecephys_session_1069461581.nwb', 'data/ecephys_session_1104289498.nwb', 'data/ecephys_session_1081079981.nwb', 'data/ecephys_session_1109680280.nwb', 'data/ecephys_session_1123100019.nwb', 'data/ecephys_session_1095340643.nwb', 'data/ecephys_session_1065437523.nwb', 'data/ecephys_session_1072567062.nwb', 'data/ecephys_session_1108528422.nwb', 'data/ecephys_session_1055240613.nwb', 'data/ecephys_session_1105543760.nwb', 'data/ecephys_session_1118512505.nwb', 'data/ecephys_session_1062755416.nwb', 'data/ecephys_session_1093638203.nwb', 'data/ecephys_session_1069193611.nwb', 'data/ecephys_session_1130113579.nwb', 'data/ecephys_session_1059678195.nwb', 'data/ecephys_session_1076487758.nwb', 'data/ecephys_session_1101268690.nwb', 'data/ecephys_session_1052530003.nwb', 'data/ecephys_session_1091039902.nwb', 'data/ecephys_session_1081090969.nwb', 'data/ecephys_session_1084939136.nwb', 'data/ecephys_session_1119946360.nwb', 'data/ecephys_session_1044389060.nwb', 'data/ecephys_session_1052533639.nwb', 'data/ecephys_session_1104297538.nwb', 'data/ecephys_session_1065908084.nwb', 'data/ecephys_session_1101263832.nwb', 'data/ecephys_session_1051155866.nwb', 'data/ecephys_session_1139846596.nwb', 'data/ecephys_session_1055221968.nwb', 'data/ecephys_session_1086198651.nwb', 'data/ecephys_session_1130349290.nwb', 'data/ecephys_session_1053925378.nwb', 'data/ecephys_session_1092466205.nwb', 'data/ecephys_session_1059908979.nwb', 'data/ecephys_session_1093867806.nwb', 'data/ecephys_session_1071300149.nwb', 'data/ecephys_session_1084427055.nwb', 'data/ecephys_session_1106985031.nwb', 'data/ecephys_session_1099869737.nwb', 'data/ecephys_session_1043752325.nwb', 'data/ecephys_session_1128719842.nwb', 'data/ecephys_session_1115077618.nwb', 'data/ecephys_session_1046581736.nwb', 'data/ecephys_session_1117148442.nwb', 'data/ecephys_session_1047969464.nwb', 'data/ecephys_session_1053709239.nwb', 'data/ecephys_session_1064639378.nwb', 'data/ecephys_session_1118324999.nwb', 'data/ecephys_session_1046166369.nwb', 'data/ecephys_session_1055415082.nwb', 'data/ecephys_session_1099872628.nwb']
+Total number of files: 153
+Processing file: data/ecephys_session_1043752325.nwb
+/lustre/orion/stf218/scratch/emin/container/miniconda3/lib/python3.12/site-packages/hdmf/spec/namespace.py:535: UserWarning: Ignoring cached namespace 'core' version 2.6.0-alpha because version 2.8.0 is already loaded.
+  warn("Ignoring cached namespace '%s' version %s because version %s is already loaded."
+Spike count shape / max: (2207, 508178) / 28
+Processing file: data/ecephys_session_1044016459.nwb
+/lustre/orion/stf218/scratch/emin/container/miniconda3/lib/python3.12/site-packages/hdmf/spec/namespace.py:535: UserWarning: Ignoring cached namespace 'core' version 2.6.0-alpha because version 2.8.0 is already loaded.
+  warn("Ignoring cached namespace '%s' version %s because version %s is already loaded."
+Spike count shape / max: (2365, 492139) / 31
+Processing file: data/ecephys_session_1044385384.nwb
+/lustre/orion/stf218/scratch/emin/container/miniconda3/lib/python3.12/site-packages/hdmf/spec/namespace.py:535: UserWarning: Ignoring cached namespace 'core' version 2.6.0-alpha because version 2.8.0 is already loaded.
+  warn("Ignoring cached namespace '%s' version %s because version %s is already loaded."
+Spike count shape / max: (2179, 487401) / 23
+Processing file: data/ecephys_session_1044389060.nwb
+/lustre/orion/stf218/scratch/emin/container/miniconda3/lib/python3.12/site-packages/hdmf/spec/namespace.py:535: UserWarning: Ignoring cached namespace 'core' version 2.6.0-alpha because version 2.8.0 is already loaded.
+  warn("Ignoring cached namespace '%s' version %s because version %s is already loaded."
+Spike count shape / max: (1645, 472777) / 43
+Processing file: data/ecephys_session_1044594870.nwb
+/lustre/orion/stf218/scratch/emin/container/miniconda3/lib/python3.12/site-packages/hdmf/spec/namespace.py:535: UserWarning: Ignoring cached namespace 'core' version 2.6.0-alpha because version 2.8.0 is already loaded.
+  warn("Ignoring cached namespace '%s' version %s because version %s is already loaded."
+Spike count shape / max: (2103, 486008) / 90
+Processing file: data/ecephys_session_1044597824.nwb
+/lustre/orion/stf218/scratch/emin/container/miniconda3/lib/python3.12/site-packages/hdmf/spec/namespace.py:535: UserWarning: Ignoring cached namespace 'core' version 2.6.0-alpha because version 2.8.0 is already loaded.
+  warn("Ignoring cached namespace '%s' version %s because version %s is already loaded."
+Spike count shape / max: (1948, 472810) / 47
+Processing file: data/ecephys_session_1046166369.nwb
+/lustre/orion/stf218/scratch/emin/container/miniconda3/lib/python3.12/site-packages/hdmf/spec/namespace.py:535: UserWarning: Ignoring cached namespace 'core' version 2.6.0-alpha because version 2.8.0 is already loaded.
+  warn("Ignoring cached namespace '%s' version %s because version %s is already loaded."
+Spike count shape / max: (3089, 484975) / 44
+Processing file: data/ecephys_session_1046581736.nwb
+/lustre/orion/stf218/scratch/emin/container/miniconda3/lib/python3.12/site-packages/hdmf/spec/namespace.py:535: UserWarning: Ignoring cached namespace 'core' version 2.6.0-alpha because version 2.8.0 is already loaded.
+  warn("Ignoring cached namespace '%s' version %s because version %s is already loaded."
+Spike count shape / max: (2193, 489257) / 41
+Processing file: data/ecephys_session_1047969464.nwb
+/lustre/orion/stf218/scratch/emin/container/miniconda3/lib/python3.12/site-packages/hdmf/spec/namespace.py:535: UserWarning: Ignoring cached namespace 'core' version 2.6.0-alpha because version 2.8.0 is already loaded.
+  warn("Ignoring cached namespace '%s' version %s because version %s is already loaded."
+Spike count shape / max: (2438, 474108) / 77
+Processing file: data/ecephys_session_1047977240.nwb
+/lustre/orion/stf218/scratch/emin/container/miniconda3/lib/python3.12/site-packages/hdmf/spec/namespace.py:535: UserWarning: Ignoring cached namespace 'core' version 2.6.0-alpha because version 2.8.0 is already loaded.
+  warn("Ignoring cached namespace '%s' version %s because version %s is already loaded."
+Spike count shape / max: (1856, 481440) / 14
+Processing file: data/ecephys_session_1048189115.nwb
+/lustre/orion/stf218/scratch/emin/container/miniconda3/lib/python3.12/site-packages/hdmf/spec/namespace.py:535: UserWarning: Ignoring cached namespace 'core' version 2.6.0-alpha because version 2.8.0 is already loaded.
+  warn("Ignoring cached namespace '%s' version %s because version %s is already loaded."
+Spike count shape / max: (1925, 477272) / 29
+Processing file: data/ecephys_session_1048196054.nwb
+/lustre/orion/stf218/scratch/emin/container/miniconda3/lib/python3.12/site-packages/hdmf/spec/namespace.py:535: UserWarning: Ignoring cached namespace 'core' version 2.6.0-alpha because version 2.8.0 is already loaded.
+  warn("Ignoring cached namespace '%s' version %s because version %s is already loaded."
+Spike count shape / max: (2288, 496232) / 29
+Processing file: data/ecephys_session_1049273528.nwb
+/lustre/orion/stf218/scratch/emin/container/miniconda3/lib/python3.12/site-packages/hdmf/spec/namespace.py:535: UserWarning: Ignoring cached namespace 'core' version 2.6.0-alpha because version 2.8.0 is already loaded.
+  warn("Ignoring cached namespace '%s' version %s because version %s is already loaded."
+Spike count shape / max: (2165, 504930) / 27
+Processing file: data/ecephys_session_1049514117.nwb
+/lustre/orion/stf218/scratch/emin/container/miniconda3/lib/python3.12/site-packages/hdmf/spec/namespace.py:535: UserWarning: Ignoring cached namespace 'core' version 2.6.0-alpha because version 2.8.0 is already loaded.
+  warn("Ignoring cached namespace '%s' version %s because version %s is already loaded."
+Spike count shape / max: (1925, 505109) / 32
+Processing file: data/ecephys_session_1051155866.nwb
+/lustre/orion/stf218/scratch/emin/container/miniconda3/lib/python3.12/site-packages/hdmf/spec/namespace.py:535: UserWarning: Ignoring cached namespace 'core' version 2.6.0-alpha because version 2.8.0 is already loaded.
+  warn("Ignoring cached namespace '%s' version %s because version %s is already loaded."
+Spike count shape / max: (1922, 502830) / 44
+Processing file: data/ecephys_session_1052331749.nwb
+/lustre/orion/stf218/scratch/emin/container/miniconda3/lib/python3.12/site-packages/hdmf/spec/namespace.py:535: UserWarning: Ignoring cached namespace 'core' version 2.6.0-alpha because version 2.8.0 is already loaded.
+  warn("Ignoring cached namespace '%s' version %s because version %s is already loaded."
+Spike count shape / max: (1772, 511256) / 24
+Processing file: data/ecephys_session_1052342277.nwb
+/lustre/orion/stf218/scratch/emin/container/miniconda3/lib/python3.12/site-packages/hdmf/spec/namespace.py:535: UserWarning: Ignoring cached namespace 'core' version 2.6.0-alpha because version 2.8.0 is already loaded.
+  warn("Ignoring cached namespace '%s' version %s because version %s is already loaded."
+Spike count shape / max: (1696, 473974) / 17
+Processing file: data/ecephys_session_1052530003.nwb
+/lustre/orion/stf218/scratch/emin/container/miniconda3/lib/python3.12/site-packages/hdmf/spec/namespace.py:535: UserWarning: Ignoring cached namespace 'core' version 2.6.0-alpha because version 2.8.0 is already loaded.
+  warn("Ignoring cached namespace '%s' version %s because version %s is already loaded."
+Spike count shape / max: (2005, 494015) / 22
+Processing file: data/ecephys_session_1052533639.nwb
+/lustre/orion/stf218/scratch/emin/container/miniconda3/lib/python3.12/site-packages/hdmf/spec/namespace.py:535: UserWarning: Ignoring cached namespace 'core' version 2.6.0-alpha because version 2.8.0 is already loaded.
+  warn("Ignoring cached namespace '%s' version %s because version %s is already loaded."
+Spike count shape / max: (1677, 478879) / 21
+Processing file: data/ecephys_session_1053709239.nwb
+/lustre/orion/stf218/scratch/emin/container/miniconda3/lib/python3.12/site-packages/hdmf/spec/namespace.py:535: UserWarning: Ignoring cached namespace 'core' version 2.6.0-alpha because version 2.8.0 is already loaded.
+  warn("Ignoring cached namespace '%s' version %s because version %s is already loaded."
+Spike count shape / max: (2840, 475829) / 26
+Processing file: data/ecephys_session_1053718935.nwb
+/lustre/orion/stf218/scratch/emin/container/miniconda3/lib/python3.12/site-packages/hdmf/spec/namespace.py:535: UserWarning: Ignoring cached namespace 'core' version 2.6.0-alpha because version 2.8.0 is already loaded.
+  warn("Ignoring cached namespace '%s' version %s because version %s is already loaded."
+Spike count shape / max: (2508, 485482) / 23
+Processing file: data/ecephys_session_1053925378.nwb
+/lustre/orion/stf218/scratch/emin/container/miniconda3/lib/python3.12/site-packages/hdmf/spec/namespace.py:535: UserWarning: Ignoring cached namespace 'core' version 2.6.0-alpha because version 2.8.0 is already loaded.
+  warn("Ignoring cached namespace '%s' version %s because version %s is already loaded."
+Spike count shape / max: (1823, 499366) / 27
+Processing file: data/ecephys_session_1053941483.nwb
+/lustre/orion/stf218/scratch/emin/container/miniconda3/lib/python3.12/site-packages/hdmf/spec/namespace.py:535: UserWarning: Ignoring cached namespace 'core' version 2.6.0-alpha because version 2.8.0 is already loaded.
+  warn("Ignoring cached namespace '%s' version %s because version %s is already loaded."
+Spike count shape / max: (1543, 475767) / 28
+Processing file: data/ecephys_session_1055221968.nwb
+/lustre/orion/stf218/scratch/emin/container/miniconda3/lib/python3.12/site-packages/hdmf/spec/namespace.py:535: UserWarning: Ignoring cached namespace 'core' version 2.6.0-alpha because version 2.8.0 is already loaded.
+  warn("Ignoring cached namespace '%s' version %s because version %s is already loaded."
+Spike count shape / max: (2585, 483037) / 49
+Processing file: data/ecephys_session_1055240613.nwb
+/lustre/orion/stf218/scratch/emin/container/miniconda3/lib/python3.12/site-packages/hdmf/spec/namespace.py:535: UserWarning: Ignoring cached namespace 'core' version 2.6.0-alpha because version 2.8.0 is already loaded.
+  warn("Ignoring cached namespace '%s' version %s because version %s is already loaded."
+Spike count shape / max: (2290, 479572) / 21
+Processing file: data/ecephys_session_1055403683.nwb
+/lustre/orion/stf218/scratch/emin/container/miniconda3/lib/python3.12/site-packages/hdmf/spec/namespace.py:535: UserWarning: Ignoring cached namespace 'core' version 2.6.0-alpha because version 2.8.0 is already loaded.
+  warn("Ignoring cached namespace '%s' version %s because version %s is already loaded."
+Spike count shape / max: (1569, 482880) / 22
+Processing file: data/ecephys_session_1055415082.nwb
+/lustre/orion/stf218/scratch/emin/container/miniconda3/lib/python3.12/site-packages/hdmf/spec/namespace.py:535: UserWarning: Ignoring cached namespace 'core' version 2.6.0-alpha because version 2.8.0 is already loaded.
+  warn("Ignoring cached namespace '%s' version %s because version %s is already loaded."
+Spike count shape / max: (1510, 498713) / 20
+Processing file: data/ecephys_session_1056495334.nwb
+/lustre/orion/stf218/scratch/emin/container/miniconda3/lib/python3.12/site-packages/hdmf/spec/namespace.py:535: UserWarning: Ignoring cached namespace 'core' version 2.6.0-alpha because version 2.8.0 is already loaded.
+  warn("Ignoring cached namespace '%s' version %s because version %s is already loaded."
+Spike count shape / max: (2744, 483894) / 33
+Processing file: data/ecephys_session_1056720277.nwb
+/lustre/orion/stf218/scratch/emin/container/miniconda3/lib/python3.12/site-packages/hdmf/spec/namespace.py:535: UserWarning: Ignoring cached namespace 'core' version 2.6.0-alpha because version 2.8.0 is already loaded.
+  warn("Ignoring cached namespace '%s' version %s because version %s is already loaded."

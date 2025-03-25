@@ -32,20 +32,21 @@ def find_nwb_files(root_dir):
     return nwb_files
 
 
-def extract_file_identifier(file_path):
+def extract_subject_session_id(file_path):
     """
-    Extracts a file identifier string from a full file path.
+    Extracts subject and session identifier strings from a full file path.
 
     Args:
         file_path (str): The full file path.
 
     Returns:
-        str: The full file identifier string.
+        str: Subject identifier string.
+        str: Session identifier string.
     """
     directory, filename = os.path.split(file_path)
     subdirectory = os.path.basename(directory)
     filename_without_extension, _ = os.path.splitext(filename)
-    return f"{subdirectory}_{filename_without_extension}"
+    return f"{subdirectory}", f"{filename_without_extension}"
 
 
 def get_args_parser():
@@ -66,7 +67,7 @@ if __name__ == '__main__':
     print(f"Total number of files: {len(nwb_files)}")
 
     # lists to store results for each session
-    spike_counts_list, identifier_list = [], []
+    spike_counts_list, subject_list, session_list = [], [], []
 
     # token counter
     n_tokens = 0
@@ -81,21 +82,23 @@ if __name__ == '__main__':
             max_time = max([u.max() for u in units['spike_times']])
             spike_counts = np.vstack([np.histogram(row, bins=np.arange(0, max_time + 0.02, 0.02))[0] for row in units['spike_times']]).astype(np.uint8)  # spike count matrix (nxt: n is #channels, t is time bins)
 
-            # file identifier
-            identifier = extract_file_identifier(file_path)
+            # subject, session identifiers
+            subject_id, session_id = extract_subject_session_id(file_path)
 
             # append sessions
             spike_counts_list.append(spike_counts)
-            identifier_list.append(identifier)
+            subject_list.append(subject_id)
+            session_list.append(session_id)
 
             print(f"Spike count shape / max: {spike_counts.shape} / {spike_counts.max()}")
             n_tokens += np.prod(spike_counts.shape)
 
     def gen_data():
-        for a, b in zip(spike_counts_list, identifier_list):
+        for a, b, c in zip(spike_counts_list, subject_list, session_list):
             yield {
                 "spike_counts": a,
-                "identifier": b,
+                "subject_id": b,
+                "session_id": c
                 }
 
     ds = Dataset.from_generator(gen_data, writer_batch_size=1)

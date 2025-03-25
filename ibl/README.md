@@ -7,6 +7,6 @@ grep 'path:' log.txt | awk '{print $2}' | grep 'processed-only' > processed_path
 sh download_ibl.sh
 ```
 
-Token count: ??
+Token count: 69,147,814,139
 
 HF repo: https://huggingface.co/datasets/eminorhan/ibl
