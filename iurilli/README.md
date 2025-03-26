@@ -1,4 +1,4 @@
-Li dataset. Dataset URL: https://dandiarchive.org/dandiset/000931
+Iurilli dataset. Dataset URL: https://dandiarchive.org/dandiset/000931
 
 To download:
 ```python
