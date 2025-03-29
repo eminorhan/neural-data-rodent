@@ -1,4 +1,5 @@
 import os
+import math
 import argparse
 import numpy as np
 from pynwb import NWBHDF5IO
@@ -93,6 +94,15 @@ if __name__ == '__main__':
             print(f"Spike count shape / max: {spike_counts.shape} / {spike_counts.max()}")
             n_tokens += np.prod(spike_counts.shape)
 
+    # the following is to split the dataset into train/test, we make use of the fact that this dataset has only 1 row here
+    spike_counts_list = spike_counts_list * 2
+    t_train = 99 * (spike_counts.shape[-1] // 100)
+    spike_counts_list[0] = spike_counts[:, :t_train]
+    spike_counts_list[1] = spike_counts[:, t_train:]
+
+    subject_list = subject_list * 2
+    session_list = session_list * 2
+
     def gen_data():
         for a, b, c in zip(spike_counts_list, subject_list, session_list):
             yield {
@@ -102,8 +112,10 @@ if __name__ == '__main__':
                 }
 
     ds = Dataset.from_generator(gen_data, writer_batch_size=1)
-    print(f"Estimated size of dataset: {ds._estimate_nbytes()/1e9:.2f} GB")
+    ds = ds.train_test_split(test_size=math.ceil(len(ds)/100), shuffle=False)
     print(f"Number of tokens in dataset: {n_tokens} tokens")
+    print(f"Number of rows in train: {len(ds["train"])}")
+    print(f"Number of rows in test: {len(ds["test"])}")
 
     # push all data to hub
-    ds.push_to_hub("eminorhan/iurilli", num_shards=1, token=True)
+    ds.push_to_hub("eminorhan/iurilli", num_shards={'train': len(ds["train"]), 'test': len(ds["test"])}, token=True)

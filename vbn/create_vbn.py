@@ -1,4 +1,5 @@
 import os
+import math
 import argparse
 import numpy as np
 from pynwb import NWBHDF5IO
@@ -102,8 +103,10 @@ if __name__ == '__main__':
                 }
 
     ds = Dataset.from_generator(gen_data, writer_batch_size=1)
-    print(f"Estimated size of dataset: {ds._estimate_nbytes()/1e9:.2f} GB")
+    ds = ds.train_test_split(test_size=math.ceil(len(ds)/100), shuffle=False)
     print(f"Number of tokens in dataset: {n_tokens} tokens")
+    print(f"Number of rows in train: {len(ds["train"])}")
+    print(f"Number of rows in test: {len(ds["test"])}")
 
-    # push all data to hub
-    ds.push_to_hub("eminorhan/vbn", num_shards=10, token=True)
+    # push all data to hub (we set num_shards=len(ds), otherwise we get list index overflow error in loading arrow file)
+    ds.push_to_hub("eminorhan/vbn", num_shards={'train': len(ds["train"]), 'test': len(ds["test"])}, token=True)
