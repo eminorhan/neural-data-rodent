@@ -23,4 +23,22 @@ Token counts per dataset:
 
 Total number of tokens: 416,541,213,101. The combined dataset can be accessed from [this](https://huggingface.co/datasets/eminorhan/neural-bench-rodent) public HF repository.
 
-Before running `merge_datasets.py`, make sure to set `HF_HUB_ETAG_TIMEOUT=3600` or something like that to prevent timeout errors.
+### Note:
+In my experience, running `merge_datasets.py` requires a patch in the `huggingface_hub` library. The HF `datasets` library doesn't do retries while loading datasets from the hub (`load_dataset`) or when pushing them to the hub (`push_to_hub`). This almost always results in connection errors for large datasets, aborting the loading or pushing of the dataset. The patch involves adding a "retry" functionality to `huggingface_hub`'s default session backend factory. Specifically, you need to update the `_default_backend_factory()` function in `huggingface_hub/utils/_http.py` with:
+```python
+from requests.adapters import HTTPAdapter, Retry
+
+...
+
+def _default_backend_factory() -> requests.Session:
+    session = requests.Session()
+    retries = Retry(total=20, backoff_factor=0.1, status_forcelist=[500, 502, 503, 504])
+    if constants.HF_HUB_OFFLINE:
+        session.mount("http://", OfflineAdapter(max_retries=retries))
+        session.mount("https://", OfflineAdapter(max_retries=retries))
+    else:
+        session.mount("http://", UniqueRequestIdAdapter(max_retries=retries))
+        session.mount("https://", UniqueRequestIdAdapter(max_retries=retries))
+    return session
+```  
+or something similar (you can play with the `Retry` settings). This will prevent the premature termination of the job when faced with connection issues. 
