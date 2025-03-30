@@ -1,38 +1,48 @@
-from datasets import load_dataset, concatenate_datasets, Sequence, Value
+from datasets import concatenate_datasets, load_dataset, DatasetDict
 
-## FIXME: this whole thing is a bit hacky and clunky at the moment, will be revisited later on
-## NOTE: we need to recast spike_counts to the same data type (uint8) before we can concatenate the datasets
+def concatenate_hf_datasets_and_push(repo_list, new_repo_name):
+    """
+    Concatenates Hugging Face datasets from a list of repositories and pushes to the Hugging Face Hub.
+    Adds a 'source_dataset' column to each component dataset, using only the name after the backslash.
 
-# # vbn
-# vbn = load_dataset("eminorhan/vbn", split='train', download_mode='force_redownload')
-# vbn = vbn.add_column("source_dataset", ["vbn"] * len(vbn))
-# print(len(vbn))
+    Args:
+        repo_list (list): A list of Hugging Face dataset repository names.
+        new_repo_name (str): The name for the new concatenated dataset repository.
+        private (bool, optional): Whether to create a private repository. Defaults to False.
+    """
 
-# # ibl
-# ibl = load_dataset("eminorhan/ibl", split='train', download_mode='force_redownload')
-# ibl = ibl.add_column("source_dataset", ["ibl"] * len(ibl))
-# print(len(ibl))
+    train_datasets = []
+    test_datasets = []
 
-# # shield
-# shield = load_dataset("eminorhan/shield", split='train', download_mode='force_redownload')
-# shield = shield.add_column("source_dataset", ["shield"] * len(shield))
-# print(len(shield))
+    for repo_name in repo_list:
+        dataset = load_dataset(repo_name, download_mode='force_redownload')
+        source_name = repo_name.split("/")[-1] # Extract the name after the last backslash
 
-# # vcn
-# vcn = load_dataset("eminorhan/vcn", split='train', download_mode='force_redownload')
-# vcn = vcn.add_column("source_dataset", ["vcn"] * len(vcn))
-# print(len(vcn))
+        train_data = dataset["train"].add_column("source_dataset", [source_name] * len(dataset["train"]))
+        test_data = dataset["test"].add_column("source_dataset", [source_name] * len(dataset["test"]))
 
-# vcn-2
-vcn_2 = load_dataset("eminorhan/vcn-2", split='train', download_mode='force_redownload')
-vcn_2 = vcn_2.add_column("source_dataset", ["vcn_2"] * len(vcn_2))
-print(len(vcn_2))
+        train_datasets.append(train_data)
+        test_datasets.append(test_data)
+        print(f"Dataset {repo_name} has been added.")
 
-# # petersen
-# petersen = load_dataset("eminorhan/petersen", split='train', download_mode='force_redownload')
-# petersen = petersen.add_column("source_dataset", ["petersen"] * len(petersen))
-# print(len(petersen))
+    # concatenate component datasets
+    concatenated_train = concatenate_datasets(train_datasets)
+    concatenated_test = concatenate_datasets(test_datasets)
+    concatenated_dataset = DatasetDict({"train": concatenated_train, "test": concatenated_test})
 
-# # concatenate all and push to hub
-# neural_bench = concatenate_datasets([willett, h1, h2, m1a, m1b, m2, area2_bump, dmfc_rsg, xiao, churchland, perich, makin, lanzarini, neupane_ppc, neupane_entorhinal, papale, rajalingham])
-# neural_bench.push_to_hub("eminorhan/neural-bench-rodent", token=True)
+    # push to hub
+    concatenated_dataset.push_to_hub(new_repo_name, num_shards={'train': len(concatenated_train), 'test': len(concatenated_test)}, token=True)
+    print(f"Concatenated dataset pushed to {new_repo_name} on the Hugging Face Hub.")
+
+
+if __name__ == '__main__':
+
+    # list of component dataset repositories to be concatenated
+    repo_list = [
+        "eminorhan/vbn", "eminorhan/ibl", "eminorhan/shield", "eminorhan/vcn", "eminorhan/vcn-2", "eminorhan/petersen",
+        "eminorhan/oddball", "eminorhan/illusion", "eminorhan/huszar", "eminorhan/steinmetz", "eminorhan/finkelstein",
+        "eminorhan/giocomo", "eminorhan/mehrotra", "eminorhan/iurilli", "eminorhan/gonzalez", "eminorhan/li" 
+    ]
+    new_repo_name = "neural-bench-rodent"
+
+    concatenate_hf_datasets_and_push(repo_list, new_repo_name)

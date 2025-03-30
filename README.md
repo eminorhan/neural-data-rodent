@@ -4,7 +4,7 @@
 
 Token counts per dataset:
 
-1. **VBN:** 153,877,057,200 tokens ([dandi:000713](https://dandiarchive.org/dandiset/000713))
+1. **VBN:** 153,877,057,200 tokens ([dandi:000713](https://dandiarchive.org/dandiset/000713)); rows = 153
 2. **IBL:** 69,147,814,139 tokens ([dandi:000409](https://dandiarchive.org/dandiset/000409)); rows = 347
 3. **SHIELD:** 61,890,305,241 tokens ([dandi:001051](https://dandiarchive.org/dandiset/001051)); rows = 99
 4. **VCN:** 36,681,686,005 tokens ([dandi:000021](https://dandiarchive.org/dandiset/000021)); rows = 32
@@ -22,3 +22,5 @@ Token counts per dataset:
 16. **Li:** 260,807,325 tokens ([dandi:000010](https://dandiarchive.org/dandiset/000010)); rows = 99
 
 Total number of tokens: 416,541,213,101. The combined dataset can be accessed from [this](https://huggingface.co/datasets/eminorhan/neural-bench-rodent) public HF repository.
+
+Before running `merge_datasets.py`, make sure to set `HF_HUB_ETAG_TIMEOUT=3600` or something like that to prevent timeout errors.
