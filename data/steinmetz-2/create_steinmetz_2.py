@@ -92,7 +92,7 @@ def create_spike_count_matrix(x, bin_size=0.02):
     n_clusters = max_cluster
 
     # initialize the spike time matrix with zeros
-    spike_time_matrix = np.zeros((n_clusters, n_timebins), dtype=int)
+    spike_time_matrix = np.zeros((n_clusters, n_timebins), dtype=np.uint8)
 
     # populate the spike time matrix
     for spike_time, cluster_index in zip(all_spike_times, all_cluster_indices):
@@ -139,7 +139,7 @@ if __name__ == '__main__':
         subject_list.append(subject_id)
         session_list.append(session_id)
 
-        print(f"Spike count shape / max: {spike_counts.shape} / {spike_counts.max()}")
+        print(f"Spike count dtype / shape / max: {spike_counts.dtype} / {spike_counts.shape} / {spike_counts.max()}")
         n_tokens += np.prod(spike_counts.shape)
 
     def gen_data():
