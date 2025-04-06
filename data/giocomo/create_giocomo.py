@@ -91,9 +91,9 @@ if __name__ == '__main__':
 
             # append sessions
             # if session data is large, divide spike_counts array into smaller chunks
-            if total_elements > 1_000_000:
+            if total_elements > 10_000_000:
                 n_channels, n_time_bins = spike_counts.shape
-                num_segments = math.ceil(total_elements / 1_000_000)
+                num_segments = math.ceil(total_elements / 10_000_000)
                 segment_size = math.ceil(n_time_bins / num_segments)
                 print(f"Spike count shape / max: {spike_counts.shape} / {spike_counts.max()}. Dividing into {num_segments} smaller chunks ...")
                 for i in range(num_segments):
@@ -122,9 +122,10 @@ if __name__ == '__main__':
                 "session_id": c,
                 "segment_id": d
                 }
+            
     ds = Dataset.from_generator(gen_data, writer_batch_size=1)
     print(f"Number of tokens in dataset: {n_tokens} tokens")
     print(f"Number of rows in dataset: {len(ds)}")
 
     # push all data to hub 
-    ds.push_to_hub("eminorhan/giocomo", max_shard_size="500MB", token=True)
+    ds.push_to_hub("eminorhan/giocomo", max_shard_size="1GB", token=True)

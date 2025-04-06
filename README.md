@@ -1,6 +1,6 @@
 ## rodent ephys data
 
-~443B raw tokens of ephys data recorded from rodents (raw=uncompressed, tokens=units x time bins). Unless otherwise noted, the data consist of spike counts within 20 ms time bins recorded from each unit.
+~441B raw tokens of ephys data recorded from rodents (raw=uncompressed, tokens=units x time bins). Unless otherwise noted, the data consist of spike counts within 20 ms time bins recorded from each unit.
 
 The current component datasets and token counts per dataset are as follows:
 
@@ -15,15 +15,15 @@ The current component datasets and token counts per dataset are as follows:
 9. **Illusion:** 13,246,412,456 tokens ([dandi:000248](https://dandiarchive.org/dandiset/000248)); sessions = 12
 10. **Huszar:** 8,812,474,629 tokens ([dandi:000552](https://dandiarchive.org/dandiset/000552)); sessions = 65
 11. **Steinmetz:** 7,881,422,592 tokens ([dandi:000017](https://dandiarchive.org/dandiset/000017)); sessions = 39
-12. **Steinmetz-2:** 1,830,825,994 tokens ([figshare:7739750](https://figshare.com/articles/dataset/Eight-probe_Neuropixels_recordings_during_spontaneous_behaviors/7739750)); sessions = 3
-13. **Finkelstein:** 1,313,786,316 tokens ([dandi:000060](https://dandiarchive.org/dandiset/000060)); sessions = 98
-14. **Giocomo:** 1,083,328,404 tokens ([dandi:000053](https://dandiarchive.org/dandiset/000053)); sessions = 349
+12. **Finkelstein:** 1,313,786,316 tokens ([dandi:000060](https://dandiarchive.org/dandiset/000060)); sessions = 98
+13. **Giocomo:** 1,083,328,404 tokens ([dandi:000053](https://dandiarchive.org/dandiset/000053)); sessions = 349
+14. **Steinmetz-2:** 684,731,334 tokens ([figshare:7739750](https://figshare.com/articles/dataset/Eight-probe_Neuropixels_recordings_during_spontaneous_behaviors/7739750)); sessions = 3
 15. **Mehrotra:** 465,402,824 tokens ([dandi:000987](https://dandiarchive.org/dandiset/000987)); sessions = 14
 16. **Iurilli:** 388,791,426 tokens ([dandi:000931](https://dandiarchive.org/dandiset/000931)); sessions = 1
 17. **Gonzalez:** 366,962,209 tokens ([dandi:000405](https://dandiarchive.org/dandiset/000405)); sessions = 276
 18. **Li:** 260,807,325 tokens ([dandi:000010](https://dandiarchive.org/dandiset/000010)); sessions = 99
 
-Total number of tokens: 442,972,210,102. 
+Total number of tokens: 441,465,416,046. 
 
 The combined dataset can be accessed from [this](https://huggingface.co/datasets/eminorhan/neural-bench-rodent) public HF repository. The combined dataset takes up about 47 GB when stored as `.parquet` files and roughly 443 GB when stored as `.arrow` files (see [this](https://stackoverflow.com/a/56481636) for an explanation of the differences between these file formats).
 

@@ -68,7 +68,7 @@ if __name__ == '__main__':
     print(f"Total number of files: {len(nwb_files)}")
 
     # lists to store results for each session
-    spike_counts_list, subject_list, session_list = [], [], []
+    spike_counts_list, subject_list, session_list, segment_list = [], [], [], []
 
     # token counter
     n_tokens = 0
@@ -86,27 +86,46 @@ if __name__ == '__main__':
             # subject, session identifiers
             subject_id, session_id = extract_subject_session_id(file_path)
 
-            # append sessions
-            spike_counts_list.append(spike_counts)
-            subject_list.append(subject_id)
-            session_list.append(session_id)
+            # token count of current session
+            total_elements = np.prod(spike_counts.shape)
 
-            print(f"Spike count shape / max: {spike_counts.shape} / {spike_counts.max()}")
-            n_tokens += np.prod(spike_counts.shape)
+            # append sessions
+            # if session data is large, divide spike_counts array into smaller chunks
+            if total_elements > 10_000_000:
+                n_channels, n_time_bins = spike_counts.shape
+                num_segments = math.ceil(total_elements / 10_000_000)
+                segment_size = math.ceil(n_time_bins / num_segments)
+                print(f"Spike count shape / max: {spike_counts.shape} / {spike_counts.max()}. Dividing into {num_segments} smaller chunks ...")
+                for i in range(num_segments):
+                    start_index = i * segment_size
+                    end_index = min((i + 1) * segment_size, n_time_bins)
+                    sub_array = spike_counts[:, start_index:end_index]
+                    spike_counts_list.append(sub_array)
+                    subject_list.append(subject_id)
+                    session_list.append(session_id)
+                    segment_list.append(f"segment_{i}")
+                    print(f"Divided into segment_{i} with shape / max: {sub_array.shape} / {sub_array.max()}")
+                    n_tokens += np.prod(sub_array.shape)
+            else:
+                spike_counts_list.append(spike_counts)
+                subject_list.append(subject_id)
+                session_list.append(session_id)
+                segment_list.append("segment_0")  # default segment id
+                print(f"Spike count shape / max: {spike_counts.shape} / {spike_counts.max()} (segment_0)")
+                n_tokens += np.prod(spike_counts.shape)
 
     def gen_data():
-        for a, b, c in zip(spike_counts_list, subject_list, session_list):
+        for a, b, c, d in zip(spike_counts_list, subject_list, session_list, segment_list):
             yield {
                 "spike_counts": a,
                 "subject_id": b,
-                "session_id": c
+                "session_id": c,
+                "segment_id": d
                 }
-
+            
     ds = Dataset.from_generator(gen_data, writer_batch_size=1)
-    ds = ds.train_test_split(test_size=math.ceil(len(ds)/100), shuffle=False)
     print(f"Number of tokens in dataset: {n_tokens} tokens")
-    print(f"Number of rows in train: {len(ds["train"])}")
-    print(f"Number of rows in test: {len(ds["test"])}")
+    print(f"Number of rows in dataset: {len(ds)}")
 
-    # push all data to hub
-    ds.push_to_hub("eminorhan/mehrotra", num_shards={'train': len(ds["train"]), 'test': len(ds["test"])}, token=True)
+    # push all data to hub 
+    ds.push_to_hub("eminorhan/mehrotra", max_shard_size="1GB", token=True)
