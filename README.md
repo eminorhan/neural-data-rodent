@@ -27,6 +27,15 @@ Total number of tokens: 441,465,416,046.
 
 The combined dataset can be accessed from [this](https://huggingface.co/datasets/eminorhan/neural-bench-rodent) public HF repository. The combined dataset takes up about 47 GB when stored as `.parquet` files and roughly 443 GB when stored as `.arrow` files (see [this](https://stackoverflow.com/a/56481636) for an explanation of the differences between these file formats).
 
+### Visualizing the datasets
+`visualize_datasets.py` provides some basic functionality to visualize random samples from the datasets:
+```python
+python visualize_datasets.py --repo_name 'eminorhan/vbn' --n_examples 6
+```
+This will randomly sample `n_examples` examples from the corresponding dataset and visualize them as below, where *x* is the time axis (binned into 20 ms windows) and the *y* axis represents the recorded units:
+
+![](assets/vbn.jpg)
+
 ### Note:
 Running `merge_datasets.py` successfully requires a patch in the `huggingface_hub` library. The HF `datasets` library doesn't do retries while loading datasets from the hub (`load_dataset`) or when pushing them to the hub (`push_to_hub`). This almost always results in connection errors for large datasets in my experience, aborting the loading or pushing of the dataset. The patch involves adding a "retry" functionality to `huggingface_hub`'s default session backend factory. Specifically, you need to update the `_default_backend_factory()` function in `huggingface_hub/utils/_http.py` with:
 ```python
