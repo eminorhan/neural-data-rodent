@@ -1,4 +1,8 @@
-## rodent ephys data
+<p align="left">
+    <a href="https://huggingface.co/datasets/eminorhan/neural-bench-rodent"><img alt="neural-bench-rodent" src="https://img.shields.io/badge/HF_datasets-neural_bench_rodent-blue"></a>
+</p>
+
+# rodent ephys data
 
 ~441B raw tokens of ephys data recorded from rodents (raw=uncompressed, tokens=units x time bins). Unless otherwise noted, the data consist of spike counts within 20 ms time bins recorded from each unit.
 
@@ -25,17 +29,17 @@ The current component datasets and token counts per dataset are as follows:
 | Gonzalez    | 366,962,209       | [dandi:000405](https://dandiarchive.org/dandiset/000405)                                                                       |      276 | [link](https://github.com/eminorhan/neural-data-rodent/tree/master/data/gonzalez)
 | Li          | 260,807,325       | [dandi:000010](https://dandiarchive.org/dandiset/000010)                                                                       |       99 | [link](https://github.com/eminorhan/neural-data-rodent/tree/master/data/li)
 
-Total number of tokens: 441,465,416,046. 
+**Total number of tokens:** 441,465,416,046. 
 
 The combined dataset can be accessed from [this](https://huggingface.co/datasets/eminorhan/neural-bench-rodent) public HF repository. The combined dataset takes up about 47 GB when stored as `.parquet` files and roughly 443 GB when stored as `.arrow` files (see [this](https://stackoverflow.com/a/56481636) for an explanation of the differences between these file formats).
 
-### Creating the component datasets
+## Creating the component datasets
 `data` directory contains all the information needed to download and preprocess the individual component datasets and push them to the HF datasets hub (quick links to the subdirectories for component datasets are provided in the Details column in the table above). You can use these as a starting point if you would like to add more datasets to the mix. Adding further `dandisets` should be particularly easy based off of the current examples. When creating the component datasets, we split long sessions (>10M tokens) into smaller equal-sized chunks of no more than 10M tokens. This makes data loading more efficient and prevents errors while creating and uploading HF datasets.
 
-### Merging the component datasets into a single dataset
+## Merging the component datasets into a single dataset
 Once we have created the individual component datasets, we merge them into a single dataset with the `merge_datasets.py` script. This also shuffles the combined dataset, creates a separate test split, and pushes the dataset to the HF datasets hub. 
 
-#### Note:
+### Note:
 Running `merge_datasets.py` successfully requires a patch in the `huggingface_hub` library. The HF `datasets` library doesn't do retries while loading datasets from the hub (`load_dataset`) or when pushing them to the hub (`push_to_hub`). This almost always results in connection errors for large datasets in my experience, aborting the loading or pushing of the dataset. The patch involves adding a "retry" functionality to `huggingface_hub`'s default session backend factory. Specifically, you need to update the `_default_backend_factory()` function in `huggingface_hub/utils/_http.py` with:
 ```python
 from requests.adapters import HTTPAdapter, Retry
@@ -54,7 +58,8 @@ def _default_backend_factory() -> requests.Session:
     return session
 ```  
 or something along these lines (you can play with the `Retry` settings). This will prevent the premature termination of the job when faced with connection issues. 
-### Visualizing the datasets
+
+## Visualizing the datasets
 `visualize_datasets.py` provides some basic functionality to visualize random samples from the datasets:
 ```python
 python visualize_datasets.py --repo_name 'eminorhan/vbn' --n_examples 6
