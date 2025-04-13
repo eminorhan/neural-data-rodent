@@ -106,6 +106,9 @@ def create_spike_count_matrix(x, bin_size=0.02):
 def get_args_parser():
     parser = argparse.ArgumentParser('Consolidate data in multiple files into a single file', add_help=False)
     parser.add_argument('--data_dir',default="data",type=str, help='Data directory')
+    parser.add_argument('--hf_repo_name',default="eminorhan/steinmetz-2",type=str, help='processed dataset will be pushed to this HF dataset repo')
+    parser.add_argument('--token_count_limit',default=10_000_000, type=int, help='sessions with larger token counts than this will be split into chunks (default: 10_000_000)')
+    parser.add_argument('--bin_size',default=0.02, type=float, help='time bin size (in seconds) for calculating spike counts (default: 0.02)')
     return parser
 
 
@@ -130,7 +133,7 @@ if __name__ == '__main__':
         print(f"Processing file: {file_path}")
 
         data = loadmat(file_path)['spks'][0]
-        spike_counts = create_spike_count_matrix(data)
+        spike_counts = create_spike_count_matrix(data, bin_size=args.bin_size)
 
         # subject, session identifiers
         subject_id, session_id = extract_subject_session_id(file_path)
@@ -140,9 +143,9 @@ if __name__ == '__main__':
 
         # append sessions
         # if session data is large, divide spike_counts array into smaller chunks
-        if total_elements > 10_000_000:
+        if total_elements > args.token_count_limit:
             n_channels, n_time_bins = spike_counts.shape
-            num_segments = math.ceil(total_elements / 10_000_000)
+            num_segments = math.ceil(total_elements / args.token_count_limit)
             segment_size = math.ceil(n_time_bins / num_segments)
             print(f"Spike count dtype / shape / max: {spike_counts.dtype} / {spike_counts.shape} / {spike_counts.max()}. Dividing into {num_segments} smaller chunks ...")
             for i in range(num_segments):
@@ -177,4 +180,4 @@ if __name__ == '__main__':
     print(f"Number of rows in dataset: {len(ds)}")
 
     # push all data to hub 
-    ds.push_to_hub("eminorhan/steinmetz-2", max_shard_size="1GB", token=True)
+    ds.push_to_hub(args.hf_repo_name, max_shard_size="1GB", token=True)
