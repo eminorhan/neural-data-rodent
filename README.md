@@ -69,7 +69,3 @@ python visualize_datasets.py --repo_name 'eminorhan/vbn' --n_examples 6
 This will randomly sample `n_examples` examples from the corresponding dataset and visualize them as below, where *x* is the time axis (binned into 20 ms windows) and the *y* axis represents the recorded units:
 
 ![](assets/vbn.jpg)
-
-### TODO:
-
-- [ ] add more info about component datasets to their respective README pages.
