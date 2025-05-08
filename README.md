@@ -1,4 +1,4 @@
-![Static Badge](https://img.shields.io/badge/HF_datasets-neural_pile_rodent-blue) 
+[![Static Badge](https://img.shields.io/badge/🤗_datasets-neural_pile_rodent-blue)](https://huggingface.co/datasets/eminorhan/neural-pile-rodent)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # Spiking neural activity data recorded from rodents 
