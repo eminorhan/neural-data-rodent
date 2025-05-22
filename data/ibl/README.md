@@ -2,12 +2,18 @@ IBL dataset.
 
 **Dataset URL:** https://dandiarchive.org/dandiset/000409
 
-To download:
+To download the dataset:
 ```python
 dandi ls -r DANDI:000409 > log.txt
 grep 'path:' log.txt | awk '{print $2}' | grep 'processed-only' > processed_paths.txt
 sh download_ibl.sh
 ```
+
+To process the data and push it to the HF Hub as a separate dataset repository:
+```python
+python create_dataset.py --hf_repo_name "eminorhan/ibl" --token_count_limit 10_000_000 --bin_size 0.02
+```
+where `hf_repo_name` is the HF dataset repository name where the processed data will be pushed to, `token_count_limit` is the maximum token count per dataset row (sessions with larger token counts than this will be split into smaller chunks), and `bin_size` is bin size in seconds for aggregating spike counts (default: 20 ms).
 
 **Token count:** 69,147,814,139
 

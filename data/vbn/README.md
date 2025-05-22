@@ -2,17 +2,17 @@ Visual Behavior - Neuropixels dataset from Allen Institute.
 
 **Dataset URL:** https://dandiarchive.org/dandiset/000713
 
-To download the latest version of the dataset:
+To download the dataset:
 ```python
-dandi download DANDI:000713
+python download_dataset.py ecephys_sessions.csv
 ```
+where the `ecephys_sessions.csv` file contains the session ids we want to download.
 
-To process the data and push it to HF hub as a separate dataset repository:
+To process the data and push it to the HF Hub as a separate dataset repository:
 ```python
-python create_vbn.py
+python create_dataset.py --hf_repo_name "eminorhan/vbn" --token_count_limit 10_000_000 --bin_size 0.02
 ```
-
-Long sessions (>10M tokens) are divided into equal-sized chunks of 10M tokens at most. For a 1000-channel recording, this is roughly equivalent to 200-second long chunks. For a 100-channel recording, it is roughly equivalent to 2000-second long chunks.
+where `hf_repo_name` is the HF dataset repository name where the processed data will be pushed to, `token_count_limit` is the maximum token count per dataset row (sessions with larger token counts than this will be split into smaller chunks), and `bin_size` is bin size in seconds for aggregating spike counts (default: 20 ms).
 
 **Session count:** 153
 
